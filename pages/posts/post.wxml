@@ -1,0 +1,23 @@
+<import src="post-item/post-item-template.wxml" />
+<view>
+  <swiper catchtap="onSwiperTap" indicator-dots="true" autoplay="true">
+    <swiper-item>
+      <image  src="/images/post/xiaolong.jpg" data-postId="3"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/post/vr.png" data-postId="4"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/iqiyi.png" data-postId="5"></image>
+    </swiper-item>
+  </swiper>
+
+  <block wx:for="{{posts_key}}" wx:key="item">
+  <!--不需要冒泡的话用catchtap-->
+    <view catchtap="onPostTap" data-postId="{{item.postId}}" data-post-name-id="123">
+    <!--这里加。。。可以展开这个对象，直接就变成里面的每个属性值-->
+      <template is="post-item" data="{{...item}}" />
+    </view>
+  </block>
+ 
+</view>
